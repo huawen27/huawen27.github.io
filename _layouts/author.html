@@ -1,15 +1,21 @@
 ---
 layout: default
 ---
-<h1>{{ page.name }}</h1>
-<h2>{{ page.position }}</h2>
-
-{{ content }}
-
-<h2>Posts</h2>
-<ul>
-  {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
-  {% for post in filtered_posts %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+<div class="author-detail-card">
+  <div class="author-header">
+    <h1 class="author-title">{{ page.name }}</h1>
+    <h2 class="author-position">{{ page.position }}</h2>
+  </div>
+  <div class="author-bio">
+    {{ content }}
+  </div>
+  <div class="author-posts">
+    <h2 class="author-posts-title">相关文章</h2>
+    <ul class="author-posts-list">
+      {% assign filtered_posts = site.posts | where: 'author', page.short_name %}
+      {% for post in filtered_posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
